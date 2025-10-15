@@ -25,7 +25,9 @@ periodics:
       - /usr/local/bin/runner.sh
       - /bin/sh
       - -c
-      - hack/publish-staging.sh
+      - |
+        export GIT_ASKPASS="$PWD/../project-infra/hack/git-askpass.sh"
+        hack/publish-staging.sh
       env:
       - name: PULL_BASE_REF
         value: main
